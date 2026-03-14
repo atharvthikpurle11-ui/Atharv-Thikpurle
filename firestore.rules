@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: products
+    // Fields: name (string), price (number), unit (string), image (string), category (string), tag (string)
+    //
+    // Collection: carts/{userId}/items
+    // Fields: productId (string), name (string), price (number), quantity (number), addedAt (timestamp)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == "shindepruthviraj207@gmail.com" && request.auth.token.email_verified == true);
+    }
+
+    // Products: Anyone can read, only admin can write
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Carts: Only the user can access their own cart
+    match /carts/{userId} {
+      allow read, write: if isOwner(userId);
+      
+      match /items/{itemId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A fruit or vegetable product available in the store",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the product" },
+        "price": { "type": "number", "description": "Price in INR" },
+        "unit": { "type": "string", "description": "Unit (e.g., kg, dozen, bunch)" },
+        "image": { "type": "string", "description": "URL to the product image" },
+        "category": { "type": "string", "description": "Category (e.g., Vegetables, Fruits)" },
+        "tag": { "type": "string", "description": "Badge tag (e.g., Fresh, New, Best Seller)" }
+      },
+      "required": ["name", "price", "unit", "image", "category"]
+    },
+    "CartItem": {
+      "title": "Cart Item",
+      "description": "An item added to a user's cart",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string", "description": "Reference to the product" },
+        "name": { "type": "string", "description": "Name of the product" },
+        "price": { "type": "number", "description": "Price at time of adding" },
+        "quantity": { "type": "number", "description": "Quantity added" },
+        "addedAt": { "type": "string", "format": "date-time", "description": "Timestamp when added" }
+      },
+      "required": ["productId", "name", "price", "quantity", "addedAt"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Collection of available products"
+    },
+    "/carts/{userId}/items/{itemId}": {
+      "schema": "CartItem",
+      "description": "User-specific cart items"
+    }
+  }
+}
