@@ -186,7 +186,7 @@ export default function App() {
       { name: "Shimla Apples", price: 160, unit: "kg", image: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=80", category: "fruits", tag: "New" },
       { name: "Alphonso Mangoes", price: 600, unit: "dozen", image: "https://images.unsplash.com/photo-1553279768-865429fa0078?auto=format&fit=crop&w=800&q=80", category: "fruits", tag: "Premium" },
       { name: "Nagpur Oranges", price: 90, unit: "kg", image: "https://images.unsplash.com/photo-1582722872445-44c501f3c89d?auto=format&fit=crop&w=800&q=80", category: "fruits", tag: "Juicy" },
-      { name: "Black Grapes", price: 120, unit: "kg", image: "https://images.unsplash.com/photo-1537084642907-629340c7e59c?auto=format&fit=crop&w=800&q=80", category: "fruits", tag: "Sweet" },
+      { name: "Black Grapes", price: 120, unit: "kg", image: "https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/04/black-grapes-1296x728-header.jpg?w=1155&h=1528", category: "fruits", tag: "Sweet" },
       { name: "Fresh Cauliflower", price: 50, unit: "kg", image: "https://images.unsplash.com/photo-1568584711075-3d021a7c3ec3?auto=format&fit=crop&w=800&q=80", category: "vegetables", tag: "Seasonal" }
     ];
 
